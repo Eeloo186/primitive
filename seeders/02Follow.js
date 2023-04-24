@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('follow', [
+   await queryInterface.bulkInsert('Follow', [
     {
       createdAt: new Date(),
       updatedAt: new Date(),

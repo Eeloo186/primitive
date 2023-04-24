@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('posthashtag', [
+   await queryInterface.bulkInsert('PostHashtag', [
     {
       createdAt: new Date(),
       updatedAt: new Date(),

@@ -8,7 +8,7 @@ class Like extends Sequelize.Model {
       timestamps: true,
       underscored: false,
       modelName: 'Like',
-      tableName: 'Likes',
+      tableName: 'likes',
       paranoid: false,
       charset: 'utf8',
       collate: 'utf8_general_ci',
