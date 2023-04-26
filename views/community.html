@@ -5,5 +5,5 @@
 {% for twit in twits %}
 <h3>게시글번호 : {{twit.id}} // 작성자ID : {{twit.User.userId}} //  작성자닉네임 : {{twit.User.nickname}} // 작성일 : {{twit.createdAt}}</h3>
 {% endfor %}
-<a href="">글쓰기 버튼</a>
+<a href="/editorTest/{{boardName}}">글쓰기 버튼</a>
 {% endblock %}

@@ -196,6 +196,7 @@ exports.renderCommunity = async (req, res, next) => {
     res.render("community", {
       title: "커뮤니티페이지",
       twits: posts,
+      boardName: 'community'
     });
   } catch (err) {
     console.error(err);
@@ -207,6 +208,26 @@ exports.renderCommunity = async (req, res, next) => {
 
 exports.renderLogin = (req, res) => {
   res.render("login", { title: "로그인페이지" });
+};
+
+
+exports.renderEditorTest = (req, res) => {
+  res.render("editorTest", { title: "에디터 테스트 페이지" });
+}
+
+exports.renderUploadTest = (req, res, next) => {
+  try{
+    console.log("컨트롤러 내부");
+    console.log(req.body.content);
+    ///////////////////////////////////////////////
+    ////////////// db에 content 등록 //////////////
+    ////////////// content 이외의 데이터 필요함 ///
+    ///////////////////////////////////////////////
+    res.status(200).send("본문 내용 DB에 저장 완료");
+    } catch (err){
+    console.error(err);
+    next(err);
+  }
 };
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
