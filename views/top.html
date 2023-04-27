@@ -8,13 +8,15 @@
   </head>
   <body>
     <h1><a href="/">로고</a>, 상단 고정 바 버튼들, 검색창 등</h1>
+    {% if user and user.id %}
+    <a href="">{{ user.nickname }} 님</a>
+    {% else %}
     <a href="/login">로그인</a>
+    {% endif %}
     <a href="/notice">공지사항</a>
     <a href="/info">정보글</a>
     <a href="/community">커뮤니티</a>
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
   </body>
-  {% block script %}
-  {% endblock %}
+  {% block script %} {% endblock %}
 </html>

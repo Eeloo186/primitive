@@ -13,7 +13,7 @@ exports.renderMain = async (req, res, next) => {
     const posts = await Post.findAll({
       include: {
         model: User,
-        attributes: ["id", "nick"],
+        attributes: ["id", "nickname"],
       },
       order: [["createdAt", "DESC"]],
     });
@@ -49,7 +49,6 @@ exports.renderHashtag = async (req, res, next) => {
   }
 };
 
-
 //////////////////////////////////////////////////////
 ///////////////////// TEST ///////////////////////////
 //////////////////////////////////////////////////////
@@ -66,18 +65,18 @@ exports.renderTestmain = async (req, res, next) => {
       include: [
         {
           model: User,
-          attributes: ['userId', 'nickname'],
+          attributes: ["userId", "nickname"],
         },
         {
           model: Board,
-          attributes: ['name'],
+          attributes: ["name"],
         },
         {
           model: Content,
-          attributes: ['content'],
+          attributes: ["content"],
         },
-      ]
-    })
+      ],
+    });
     res.render("testmain", {
       title: "메인페이지",
       twits: posts,
@@ -101,19 +100,19 @@ exports.renderNotice = async (req, res, next) => {
       include: [
         {
           model: User,
-          attributes: ['userId', 'nickname'],
+          attributes: ["userId", "nickname"],
         },
         {
           model: Board,
-          attributes: ['name'],
-          where: { name: 'notice' },
+          attributes: ["name"],
+          where: { name: "notice" },
         },
         {
           model: Content,
-          attributes: ['content'],
+          attributes: ["content"],
         },
-      ]
-    })
+      ],
+    });
     res.render("notice", {
       title: "공지사항페이지",
       twits: posts,
@@ -137,19 +136,19 @@ exports.renderInfo = async (req, res, next) => {
       include: [
         {
           model: User,
-          attributes: ['userId', 'nickname'],
+          attributes: ["userId", "nickname"],
         },
         {
           model: Board,
-          attributes: ['name'],
-          where: { name: 'info' },
+          attributes: ["name"],
+          where: { name: "info" },
         },
         {
           model: Content,
-          attributes: ['content'],
+          attributes: ["content"],
         },
-      ]
-    })
+      ],
+    });
     res.render("info", {
       title: "정보페이지",
       twits: posts,
@@ -173,24 +172,26 @@ exports.renderCommunity = async (req, res, next) => {
       include: [
         {
           model: User,
-          attributes: ['userId', 'nickname'],
+          attributes: ["userId", "nickname"],
         },
         {
           model: Board,
-          attributes: ['name'],
-          where: { name: 'community' },
+          attributes: ["name"],
+          where: { name: "community" },
         },
         {
           model: Content,
-          attributes: ['content'],
+          attributes: ["content"],
         },
-      ]
-    })
+      ],
+    });
 
     // DB createdAt에 들어있는 Date 정보 커스터마이징
-    posts.forEach( (post) => {
-      let date = post['dataValues']['createdAt'];
-      post['dataValues']['createdAt'] = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
+    posts.forEach((post) => {
+      let date = post["dataValues"]["createdAt"];
+      post["dataValues"][
+        "createdAt"
+      ] = `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
     });
 
     res.render("community", {
@@ -202,8 +203,6 @@ exports.renderCommunity = async (req, res, next) => {
     next(err);
   }
 };
-
-
 
 exports.renderLogin = (req, res) => {
   res.render("login", { title: "로그인페이지" });
