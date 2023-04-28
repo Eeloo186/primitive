@@ -5,17 +5,49 @@
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="top.css" />
   </head>
   <body>
-    <h1><a href="/">로고</a>, 상단 고정 바 버튼들, 검색창 등</h1>
-    {% if user and user.id %}
-    <a href="">{{ user.nickname }} 님</a>
-    {% else %}
-    <a href="/login">로그인</a>
-    {% endif %}
-    <a href="/notice">공지사항</a>
-    <a href="/info">정보글</a>
-    <a href="/community">커뮤니티</a>
+    <div id="menu-box">
+      <div id="myPage">
+        {% if user %}
+        <a href="" id="myPage-btn">{{ user.nickname }} 님</a>
+        {% if user.provider == 'kakao' %}
+        <div id="kakaoLogout-box">
+          <a
+            id="kakaoLogout"
+            href="https://kauth.kakao.com/oauth/logout?client_id=d45b50b3b88e8033a6e47e1c9e7d43d8&logout_redirect_uri=http://localhost:8001/auth/logout"
+            ><img src="/imgs/kakaologout.png" alt="" /> 로그아웃</a
+          >
+        </div>
+        {% else %}
+        <div id="nomarl-logout">
+          <a id="logout" href="/auth/logout">로그아웃</a>
+        </div>
+        {% endif %} {% else %}
+        <div id="login-box">
+          <a href="/login" id="login-btn"> 로그인 </a>
+        </div>
+        {% endif %}
+      </div>
+      <div id="logo-box">
+        <h1><a href="/">로고</a></h1>
+      </div>
+      <div>
+        <ul id="menu-list">
+          <li>
+            <a href="/notice">공지사항</a>
+          </li>
+          <li>
+            <a href="/info">정보글</a>
+          </li>
+          <li>
+            <a href="/community">커뮤니티</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     {% block content %} {% endblock %}
   </body>
   {% block script %} {% endblock %}

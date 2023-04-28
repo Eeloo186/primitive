@@ -50,7 +50,7 @@ body {
 
 .input-style {
   width: 400px;
-  padding: 10px;
+  padding: 12px;
   box-sizing: border-box;
   border-radius: 8px;
   background-color: rgb(255, 255, 255);
@@ -79,7 +79,7 @@ body {
 }
 
 #pet-information {
-  width: 400px;
+  width: 350px;
   position: absolute;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
@@ -93,8 +93,9 @@ body {
 #pet-information h4 {
   text-align: center;
   padding: 10px;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(132, 1, 255);
   border-radius: 12px 12px 0 0;
+  color: white;
 }
 
 .pet-list {
@@ -103,7 +104,7 @@ body {
   padding: 10px;
 }
 .pet-list li {
-  width: 340px;
+  width: 320px;
   margin: 0 auto;
 }
 
@@ -141,4 +142,9 @@ body {
 #confirm {
   font-size: 10px;
   margin-left: 40px;
+}
+
+.confirm-box {
+  font-size: 12px;
+  margin-left: 25px;
 }

@@ -6,6 +6,7 @@ const session = require("express-session");
 const nunjucks = require("nunjucks");
 const dotenv = require("dotenv");
 const passport = require("passport");
+const { User } = require("./models");
 
 dotenv.config();
 const pageRouter = require("./routes/page");

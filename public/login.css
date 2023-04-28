@@ -7,16 +7,28 @@
 
 body {
   margin: 0;
-  background-color: #d4d5d4;
+  background-color: #dddddd;
+}
+
+.logo {
+  text-align: center;
+  font-size: 50px;
+  margin: 2% auto;
+}
+
+.logo a {
+  color: #ffffff;
+  background-color: black;
+  padding: 10px;
 }
 
 .login-form {
   width: 500px;
   background-color: #ffffff;
-  margin: 10% auto;
+  margin: 5% auto;
   padding: 20px;
   text-align: center;
-  border: 1px solid rgb(189, 189, 189);
+  border: 1px solid rgb(162, 162, 162);
   height: auto;
 }
 

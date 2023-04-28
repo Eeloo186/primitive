@@ -10,6 +10,8 @@ const {
   renderInfo,
   renderCommunity,
   renderLogin,
+  userId,
+  userNick,
 } = require("../controllers/page");
 
 const router = express.Router();
@@ -25,6 +27,10 @@ router.use((req, res, next) => {
 router.get("/profile", isLoggedIn, renderProfile);
 
 router.get("/join", isNotLoggedIn, renderJoin);
+
+router.get("/check-userId", userId);
+
+router.get("/check-userNick", userNick);
 
 // router.get('/', renderMain);
 

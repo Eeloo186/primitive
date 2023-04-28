@@ -1,11 +1,24 @@
 const { User, Post, Hashtag, Board, Content } = require("../models");
+const { join } = require("./auth");
 
 exports.renderProfile = (req, res) => {
   res.render("profile", { title: "내 정보 - NodeBird" });
 };
 
-exports.renderJoin = (req, res) => {
-  res.render("join", { title: "회원가입 - NodeBird" });
+exports.renderJoin = async (req, res, next) => {
+  try {
+    const joins = await User.findAll({
+      attributes: ["id", "userId"],
+    });
+    res.render("join", {
+      title: "회원가입 - NodeBird",
+      script: "/javascript/join.js",
+      join: joins,
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
 };
 
 exports.renderMain = async (req, res, next) => {
@@ -65,7 +78,7 @@ exports.renderTestmain = async (req, res, next) => {
       include: [
         {
           model: User,
-          attributes: ["userId", "nickname"],
+          attributes: ["userId", "nickname", "provider"],
         },
         {
           model: Board,
@@ -210,3 +223,27 @@ exports.renderLogin = (req, res) => {
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
+
+exports.userId = async (req, res) => {
+  try {
+    const userId = req.query.userId;
+    const user = await User.findOne({ where: { userId: userId } });
+    const isDuplicate = user !== null;
+    res.json({ isDuplicate: isDuplicate });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+exports.userNick = async (req, res) => {
+  try {
+    const nickname = req.query.nickname;
+    const user = await User.findOne({ where: { nickname: nickname } });
+    const isDuplicate = user !== null;
+    res.json({ isDuplicate: isDuplicate });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
